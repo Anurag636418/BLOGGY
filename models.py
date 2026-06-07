@@ -13,7 +13,7 @@ class User(Base):
     email: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
     image_file:Mapped[str | None]=mapped_column(String(220),default=None,nullable=True)
 
-    posts:Mapped[list[Post]]=relationship(back_populates="author")
+    posts:Mapped[list[Post]]=relationship(back_populates="author",cascade="all,delete-orphan")
 
     @property 
     def image_path(self)->str:
