@@ -22,8 +22,8 @@ class User(Base):
     def image_path(self)->str:
       if self.image_file:
 
-        return f"/static/media/profile_pics/{self.image_file}"
-      return "/static/media/profile_pics/profile.png"
+        return f"/media/profile_pics/{self.image_file}"
+      return "/media/profile_pics/profile.png"
 
 
 
