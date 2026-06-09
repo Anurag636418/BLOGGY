@@ -48,3 +48,11 @@ class PostResponse(PostBase):
     user_id:int
     date_posted:datetime#in memory date is stored as string ,it should be datetime when we use database
     author:UserPublic
+
+
+class PaginatedPostsResponse(BaseModel):
+    posts: list[PostResponse]
+    total: int
+    skip: int
+    limit: int
+    has_more: bool
