@@ -16,7 +16,7 @@ class UserPublic(BaseModel):
      model_config=ConfigDict(from_attributes=True)
      id:int
      username:str
-     image_file:str
+     image_file:str|None
      image_path:str
 class UserPrivate(UserPublic):
     email:EmailStr
@@ -24,6 +24,20 @@ class UserUpdate(BaseModel):
     username:str|None=Field(default=None,min_length=1,max_length=50)
     email:EmailStr|None=Field(default=None,max_length=200)
     
+
+class ForgotPasswordRequest(BaseModel):
+    email:EmailStr=Field(max_length=200)
+
+
+class ResetPasswordRequest(BaseModel):
+    token:str=Field(min_length=1)
+    new_password:str=Field(min_length=8)
+
+
+class ChangePasswordRequest(BaseModel):
+    current_password:str=Field(min_length=1)
+    new_password:str=Field(min_length=8)
+
 
 class Token(BaseModel):
     access_token:str
@@ -56,3 +70,5 @@ class PaginatedPostsResponse(BaseModel):
     skip: int
     limit: int
     has_more: bool
+
+
