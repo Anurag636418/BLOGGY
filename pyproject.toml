@@ -7,9 +7,11 @@ requires-python = ">=3.13"
 dependencies = [
     "aiosmtplib>=5.1.1",
     "aiosqlite>=0.22.1",
+    "alembic>=1.18.4",
     "fastapi[standard]>=0.136.3",
     "greenlet>=3.5.1",
     "pillow>=12.2.0",
+    "psycopg[binary]>=3.3.4",
     "pwdlib[argon2]>=0.3.0",
     "pydantic-settings>=2.14.1",
     "pyjwt>=2.13.0",

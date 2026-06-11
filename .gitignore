@@ -15,3 +15,9 @@ media/profile_pics/*
 !media/profile_pics/profile.png
 populate_db.py
 populate_images
+alembic/__pycache__
+
+
+
+
+
