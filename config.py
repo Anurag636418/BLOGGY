@@ -1,7 +1,8 @@
-from pydantic import SecretStr
-from pydantic_settings import BaseSettings,SettingsConfigDict
 
-class Settings(BaseSettings):#BaseSettings from pydantic Settings
+from pydantic import SecretStr, model_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+class Settings(BaseSettings):  # BaseSettings from pydantic Settings
     model_config=SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
@@ -11,6 +12,19 @@ class Settings(BaseSettings):#BaseSettings from pydantic Settings
     secret_key:SecretStr
     algorithm:str="HS256"
     access_token_expire_minutes:int=30
+
+    s3_bucket_name: str
+    s3_region: str = "ap-south-1"
+    s3_access_key: SecretStr | None = None
+    s3_access_key_id: SecretStr | None = None
+    s3_secret_access_key: SecretStr | None = None
+    s3_endpoint_url: str | None = None
+
+    @model_validator(mode="after")
+    def normalize_s3_access_key_id(self):
+        if self.s3_access_key_id is None and self.s3_access_key is not None:
+            self.s3_access_key_id = self.s3_access_key
+        return self
 
     max_upload_size_bytes : int=5*1024*1024
 

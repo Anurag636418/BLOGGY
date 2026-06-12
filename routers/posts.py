@@ -76,7 +76,7 @@ async def update_post_full(
     
     if post.user_id!=current_user.id:
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN, detail="NOT AUTHORIZED TO UPDATE THE POST"
+            status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to update this post"
         )
 
     
@@ -104,7 +104,7 @@ async def update_post_partial(
         )
     if post.user_id!=current_user.id:
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN, detail="NOT AUTHORIZED TO UPDATE THE POST"
+            status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to update this post"
         )
 
     update_data = post_data.model_dump(exclude_unset=True)
@@ -127,7 +127,7 @@ async def delete_post(post_id: int,current_user:CurrentUser,db: Annotated[AsyncS
         
     if post.user_id!=current_user.id:
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN, detail="NOT AUTHORIZED TO UPDATE THE POST"
+            status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to update this post"
         )
 
     
