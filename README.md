@@ -77,10 +77,10 @@ Start the development server:
 fastapi dev main.py
 ```
 
-The application will be available at `http://localhost:8000`
+The application will be available at `http://localhost:8080`
 
-- API documentation: `http://localhost:8000/docs`
-- Alternative docs: `http://localhost:8000/redoc`
+- API documentation: `http://localhost:8080/docs`
+- Alternative docs: `http://localhost:8080/redoc`
 
 ## Project Structure
 
@@ -159,8 +159,8 @@ alembic upgrade head
 
 Build and run with Docker:
 ```bash
-docker build -t bloggers .
-docker run -p 8000:8000 --env-file .env bloggers
+docker build -t fastapi-app .
+docker run -p 8080:8080 --env-file .env fastapi-app
 ```
 
 
